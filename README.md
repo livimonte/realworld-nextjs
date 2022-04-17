@@ -1,10 +1,19 @@
 <p align="center">
+  <a href="#contribute">
+    <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-Welcome-informational.svg">
+  </a>
+
+  <a href="#license">
+    <img alt="GitHub license" src="https://img.shields.io/badge/License-MIT-informational.svg">
+  </a>
+</p>
+
+<p align="center">
   <a href="#project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#contribute">Contribute</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#license">License</a>
 </p>
-
 
 # This project contain a real world example app that adheres to the [RealWorld](https://github.com/gothinkster/realworld) spec and API.
 
@@ -19,17 +28,6 @@ For more information on how to this works with other frontends/backends, head ov
 <h1 align="center">
   <img alt="RealWorld" src=".github/logo.png"  width="100%"/>
 </h1>
-
-<p align="center">
-  <a href="#contribute">
-    <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-Welcome-informational.svg">
-  </a>
-
-  <a href="#license">
-    <img alt="GitHub license" src="https://img.shields.io/badge/License-MIT-informational.svg">
-  </a>
-</p>
-
 
 ## Project [TODO]
 
