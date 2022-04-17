@@ -1,7 +1,19 @@
 {
   "name": "realworld-nextjs",
-  "version": "0.1.0",
-  "private": true,
+  "description": "Real World Conduit app with Next, React, SSR, TypeScript, and Cypress",
+  "author": "Livingstone Del Monte",
+  "version": "1.0.0",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "nextjs",
+    "typescript",
+    "cypress"
+  ],
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -20,5 +32,17 @@
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.5",
     "typescript": "4.6.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

@@ -4,6 +4,7 @@
 /node_modules
 /dist
 /build
+/out/
 /.pnp
 .pnp.js
 
@@ -12,7 +13,6 @@
 
 # next.js
 /.next/
-/out/
 .vercel
 
 # IDEs and editors
@@ -42,7 +42,6 @@
 .DS_Store
 Thumbs.db
 *.pem
-
 
 #log files
 npm-debug.log*
