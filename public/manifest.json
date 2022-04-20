@@ -1,0 +1,33 @@
+{
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "orientation": "portrait",
+  "background_color": "#9E499E",
+  "theme_color": "#AC51AB",
+  "short_name": "realworld-nextjs",
+  "name": "Real World Conduit app by Livingstone Del Monte",
+  "description": "Real World Conduit app with Next, React, SSR, TypeScript, and Cypress",
+  "icons": [
+    {
+      "src": "/theme/icon-180x180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "/theme/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/theme/icon-256x256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "/theme/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
