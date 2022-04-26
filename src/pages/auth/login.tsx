@@ -1,7 +1,7 @@
 import { Field, Form, FormikProvider, useFormik } from 'formik'
 import * as Yup from 'yup'
 import { NextPage } from 'next'
-import Link from 'next/link'
+import { Link } from '../../components/_common/link/link'
 
 const Login: NextPage = () => {
   const { handleLogin } = (values) => {}
