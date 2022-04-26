@@ -7,12 +7,12 @@ const Login: NextPage = () => {
   const { handleLogin } = (values) => {}
 
   const LoginSchema = Yup.object().shape({
-    name: Yup.string().required(),
-    email: Yup.string().email().required(),
-    password: Yup.string().min(8).required(),
+    name: Yup.string().required('Name is a required field'),
+    email: Yup.string().email('Email must be a valid email').required('Email is a required field'),
+    password: Yup.string().min(8, 'Password must be at least 8 characters').required('Password is a required field'),
     password_confirm: Yup.string()
-      .equals([Yup.ref('password')], 'passwords must match')
-      .required(),
+      .equals([Yup.ref('password')], 'Passwords must match')
+      .required('Confirm Password is a required field'),
   })
 
   const formik = useFormik({
