@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import Image from 'next/image'
+import { Link } from '../_common/link/link'
 
 export const ArticlePreview = () => {
   return (
@@ -9,8 +9,8 @@ export const ArticlePreview = () => {
           <Image src="http://i.imgur.com/Qr71crq.jpg" width={32} height={32} />
         </Link>
         <div className="info">
-          <Link href="/">
-            <a className="author">Eric Simons</a>
+          <Link href="/" className="author">
+            Eric Simons
           </Link>
           <span className="date">January 20th</span>
         </div>
@@ -18,16 +18,15 @@ export const ArticlePreview = () => {
           <i className="ion-heart" /> 29
         </button>
       </div>
-      <Link href="/">
-        <a className="preview-link">
-          <h1>How to build webapps that scale</h1>
-          <p>This is the description for the post.</p>
-          <span>Read more...</span>
-          <ul className="tag-list">
-            <li className="tag-default tag-pill tag-outline">Music</li>
-            <li className="tag-default tag-pill tag-outline">Song</li>
-          </ul>
-        </a>
+      {/*TODO: Fix html semantics (copied from template) */}
+      <Link href="/" className="preview-link">
+        <h1>How to build webapps that scale</h1>
+        <p>This is the description for the post.</p>
+        <span>Read more...</span>
+        <ul className="tag-list">
+          <li className="tag-default tag-pill tag-outline">Music</li>
+          <li className="tag-default tag-pill tag-outline">Song</li>
+        </ul>
       </Link>
     </div>
   )

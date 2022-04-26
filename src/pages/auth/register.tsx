@@ -7,14 +7,20 @@ const Login: NextPage = () => {
   const { handleLogin } = (values) => {}
 
   const LoginSchema = Yup.object().shape({
+    name: Yup.string().required(),
     email: Yup.string().email().required(),
-    password: Yup.string().required(),
+    password: Yup.string().min(8).required(),
+    password_confirm: Yup.string()
+      .equals([Yup.ref('password')], 'passwords must match')
+      .required(),
   })
 
   const formik = useFormik({
     initialValues: {
+      name: '',
       email: '',
       password: '',
+      password_confirm: '',
     },
     validationSchema: LoginSchema,
     onSubmit: async (values) => {
@@ -30,16 +36,33 @@ const Login: NextPage = () => {
           <div className="col-md-6 offset-md-3 col-xs-12">
             <h1 className="text-xs-center">Sign in</h1>
             <p className="text-xs-center">
-              <Link href="/auth/register">Need an account?</Link>
+              <Link href="/auth/login">Have an account?</Link>
             </p>
 
             <FormikProvider value={formik}>
               <ul className="error-messages">
+                {formik.touched.name && formik.errors.name && <li>{formik.errors.name}</li>}
                 {formik.touched.email && formik.errors.email && <li>{formik.errors.email}</li>}
                 {formik.touched.password && formik.errors.password && <li>{formik.errors.password}</li>}
+                {formik.touched.password_confirm && formik.errors.password_confirm && (
+                  <li>{formik.errors.password_confirm}</li>
+                )}
               </ul>
 
               <Form noValidate onSubmit={formik.handleSubmit}>
+                <fieldset className="form-group">
+                  <Field
+                    className="form-control form-control-lg"
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Full name"
+                    value={formik.values.name}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                </fieldset>
+
                 <fieldset className="form-group">
                   <Field
                     className="form-control form-control-lg"
@@ -61,6 +84,19 @@ const Login: NextPage = () => {
                     type="password"
                     placeholder="Password"
                     value={formik.values.password}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                </fieldset>
+
+                <fieldset className="form-group">
+                  <Field
+                    className="form-control form-control-lg"
+                    id="password_confirm"
+                    name="password_confirm"
+                    type="password"
+                    placeholder="Confirm Password"
+                    value={formik.values.password_confirm}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />

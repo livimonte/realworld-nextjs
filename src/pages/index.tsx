@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
-import Link from 'next/link'
-import { HeaderBanner } from '../components/header-banner'
-import { ArticlePreview } from '../components/article-preview'
-import { TagList } from '../components/tags-list'
+import { HeaderBanner } from '../components/headerBanner/headerBanner'
+import { ArticlePreview } from '../components/articlePreview/articlePreview'
+import { TagList } from '../components/tags/tags'
+import { Link } from '../components/_common/link/link'
 
 const Home: NextPage = () => {
   return (
@@ -15,13 +15,13 @@ const Home: NextPage = () => {
             <div className="feed-toggle">
               <ul className="nav nav-pills outline-active">
                 <li className="nav-item">
-                  <Link href="/">
-                    <a className="nav-link disabled">Your Feed</a>
+                  <Link href="/" className="nav-link disabled">
+                    Your Feed
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link href="/">
-                    <a className="nav-link active">Global Feed</a>
+                  <Link href="/" className="nav-link active">
+                    Global Feed
                   </Link>
                 </li>
               </ul>

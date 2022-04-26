@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import Image from 'next/image'
-import { ArticlePreview } from '../../components/article-preview'
+import { ArticlePreview } from '../../components/articlePreview/articlePreview'
 
 const Profile: NextPage = () => {
   return (

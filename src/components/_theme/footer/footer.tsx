@@ -1,10 +1,10 @@
-import Link from 'next/link'
+import { Link } from '../../_common/link/link'
 
 export const Footer = () => (
   <footer>
     <div className="container">
-      <Link href="/">
-        <a className="logo-font">conduit</a>
+      <Link href="/" className="logo-font">
+        conduit
       </Link>
       <span className="attribution">
         An interactive learning project from <a href="https://thinkster.io">Thinkster</a>. Code &amp; design licensed
