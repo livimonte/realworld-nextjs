@@ -2,30 +2,44 @@ import { Field, Form, FormikProvider, useFormik } from 'formik'
 import * as Yup from 'yup'
 import { NextPage } from 'next'
 import { Link } from '../../components/_common/link/link'
+import { api } from '../../utils/api'
 
-const Login: NextPage = () => {
-  const { handleLogin } = (values) => {}
+type RegisterData = {
+  username: string
+  email: string
+  password: string
+  password_confirm: string
+}
 
-  const LoginSchema = Yup.object().shape({
-    name: Yup.string().required('Name is a required field'),
-    email: Yup.string().email('Email must be a valid email').required('Email is a required field'),
-    password: Yup.string().min(8, 'Password must be at least 8 characters').required('Password is a required field'),
-    password_confirm: Yup.string()
-      .equals([Yup.ref('password')], 'Passwords must match')
-      .required('Confirm Password is a required field'),
-  })
+const RegisterSchema = Yup.object().shape({
+  username: Yup.string().required('Name is a required field'),
+  email: Yup.string().email('Email must be a valid email').required('Email is a required field'),
+  password: Yup.string().min(8, 'Password must be at least 8 characters').required('Password is a required field'),
+  password_confirm: Yup.string()
+    .equals([Yup.ref('password')], 'Passwords must match')
+    .required('Confirm Password is a required field'),
+})
+
+const Register: NextPage = () => {
+  const handleRegister = async (values: RegisterData) => {
+    const { username, email, password } = values
+
+    const save = await api.post('/users', {
+      user: { username, email, password },
+    })
+  }
 
   const formik = useFormik({
     initialValues: {
-      name: '',
+      username: '',
       email: '',
       password: '',
       password_confirm: '',
     },
-    validationSchema: LoginSchema,
+    validationSchema: RegisterSchema,
     onSubmit: async (values) => {
-      await LoginSchema.validate(values)
-      await handleLogin(values)
+      await RegisterSchema.validate(values)
+      await handleRegister(values)
     },
   })
 
@@ -41,7 +55,7 @@ const Login: NextPage = () => {
 
             <FormikProvider value={formik}>
               <ul className="error-messages">
-                {formik.touched.name && formik.errors.name && <li>{formik.errors.name}</li>}
+                {formik.touched.username && formik.errors.username && <li>{formik.errors.username}</li>}
                 {formik.touched.email && formik.errors.email && <li>{formik.errors.email}</li>}
                 {formik.touched.password && formik.errors.password && <li>{formik.errors.password}</li>}
                 {formik.touched.password_confirm && formik.errors.password_confirm && (
@@ -53,11 +67,11 @@ const Login: NextPage = () => {
                 <fieldset className="form-group">
                   <Field
                     className="form-control form-control-lg"
-                    id="name"
-                    name="name"
+                    id="username"
+                    name="username"
                     type="text"
                     placeholder="Full name"
-                    value={formik.values.name}
+                    value={formik.values.username}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -114,4 +128,4 @@ const Login: NextPage = () => {
   )
 }
 
-export default Login
+export default Register
