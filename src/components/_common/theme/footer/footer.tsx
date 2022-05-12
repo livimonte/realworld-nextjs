@@ -1,4 +1,4 @@
-import { Link } from '../../_common/link/link'
+import { Link } from '../../link/link'
 
 export const Footer = () => (
   <footer>

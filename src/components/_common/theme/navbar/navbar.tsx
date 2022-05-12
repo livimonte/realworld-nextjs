@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import { Link } from '../../_common/link/link'
-import { LinkNav } from '../../_common/link/linkNav'
+import { Link } from '../../link/link'
+import { LinkNav } from '../../link/linkNav'
 
 export const Navbar = () => {
   const { pathname } = useRouter()
