@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { normalizeErrorObj } from './helpers'
+import { normalizeErrorObj, normalizeSuccessObj } from './helpers'
 
 const api =
   axios.create({
@@ -20,7 +20,7 @@ api.interceptors.request.use(
 )
 
 api.interceptors.response.use(
-  async (response) => response,
+  async (response) => normalizeSuccessObj(response),
   (error) => Promise.reject(normalizeErrorObj(error)),
 )
 

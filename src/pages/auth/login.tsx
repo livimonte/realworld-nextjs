@@ -2,14 +2,43 @@ import { Field, Form, FormikProvider, useFormik } from 'formik'
 import * as Yup from 'yup'
 import { NextPage } from 'next'
 import { Link } from '../../components/_common/link/link'
+import { api } from '../../utils/api'
+import { conduitFormErrorsToString, log, handleError } from '../../utils/helpers'
+import { ErrorResponse } from '../../utils/types'
+import { useRouter } from 'next/router'
+
+type LoginData = {
+  email: string
+  password: string
+}
+
+const LoginSchema = Yup.object().shape({
+  email: Yup.string().email('Email must be a valid email').required('Email is a required field'),
+  password: Yup.string().required('Password is a required field'),
+})
 
 const Login: NextPage = () => {
-  const { handleLogin } = (values) => {}
+  const router = useRouter()
 
-  const LoginSchema = Yup.object().shape({
-    email: Yup.string().email('Email must be a valid email').required('Email is a required field'),
-    password: Yup.string().required('Password is a required field'),
-  })
+  const handleLogin = async (values: LoginData) => {
+    const { email, password } = values
+
+    try {
+      const {
+        data: { user },
+      } = await api.post('/users/login', {
+        user: { email, password },
+      })
+
+      if (user && user.token && user.email) {
+        localStorage.setItem('@rw:user', JSON.stringify(user))
+        router.push('/')
+      }
+    } catch (error) {
+      const message = conduitFormErrorsToString(error as ErrorResponse)
+      log('mesage', message)
+    }
+  }
 
   const formik = useFormik({
     initialValues: {

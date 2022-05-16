@@ -7,5 +7,6 @@ module.exports = {
     NEXT_PUBLIC_PORT: PORT,
     NEXT_PUBLIC_URL: `http://localhost:${PORT}`,
     NEXT_PUBLIC_API: `http://localhost:${PORT_API}/api`,
+    NEXT_PUBLIC_DEBUG: 'INFO', // 'INFO' || 'ALL'
   },
 }

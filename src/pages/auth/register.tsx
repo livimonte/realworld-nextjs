@@ -3,6 +3,8 @@ import * as Yup from 'yup'
 import { NextPage } from 'next'
 import { Link } from '../../components/_common/link/link'
 import { api } from '../../utils/api'
+import { conduitFormErrorsToString, log, getErrorMessage, handleError } from '../../utils/helpers'
+import { ErrorResponse } from '../../utils/types'
 
 type RegisterData = {
   username: string
@@ -24,9 +26,17 @@ const Register: NextPage = () => {
   const handleRegister = async (values: RegisterData) => {
     const { username, email, password } = values
 
-    const save = await api.post('/users', {
-      user: { username, email, password },
-    })
+    try {
+      const user = await api.post('/users', {
+        user: { username, email, password },
+      })
+
+      log('user', user)
+    } catch (error) {
+      const message = conduitFormErrorsToString(error as ErrorResponse)
+
+      // handleError(error)
+    }
   }
 
   const formik = useFormik({
