@@ -3,7 +3,8 @@ import * as Yup from 'yup'
 import { NextPage } from 'next'
 import { Link } from '../../components/_common/link/link'
 import { api } from '../../utils/api'
-import { conduitFormErrorsToString, log, getErrorMessage, handleError } from '../../utils/helpers'
+import { log } from '../../utils/helpers'
+import { conduitFormErrorsToString, getErrorMessage, handleError } from '../../utils/apiData'
 import { ErrorResponse } from '../../utils/types'
 
 type RegisterData = {
